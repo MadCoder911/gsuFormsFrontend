@@ -10,7 +10,7 @@ const Login = () => {
   const login = async () => {
     try {
       setLoading(true);
-      const { data } = await axios({
+      await axios({
         method: "post",
         url: import.meta.env.VITE_API_URL + "login",
         withCredentials: true,
