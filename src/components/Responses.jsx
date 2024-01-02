@@ -23,7 +23,7 @@ const Responses = () => {
             setLoading(false);
           })
           .catch((err) => {
-            console.log(err, "ERROR");
+            console.log(err, "ERRORR");
             toast.error("Unauthorized, please login..");
             setTimeout(() => {
               navigate("/login");
