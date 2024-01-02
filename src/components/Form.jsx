@@ -1,6 +1,28 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 const Form = () => {
+  useEffect(() => {
+    try {
+      axios({
+        method: "get",
+        withCredentials: true,
+        url: import.meta.env.VITE_API_URL + "forms",
+      })
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          toast.error("Unauthorized, please login..");
+          setTimeout(() => {}, 1000);
+        });
+
+      return;
+    } catch (error) {
+      return;
+    }
+  });
   return (
     <div className="bg-blue-400   h-[100vh]  p-4 flex flex-col relative items-center justify-center">
       <main className="bg-contact h-[100%] relative lg:w-[80%] w-[95%] flex-col flex  ">
