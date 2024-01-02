@@ -11,27 +11,27 @@ const Responses = () => {
 
   useEffect(() => {
     setLoading(true);
-    try {
-      axios({
-        method: "get",
-        withCredentials: true,
-        url: import.meta.env.VITE_API_URL + "forms",
-      })
-        .then((res) => {
-          setData(res.data);
+    setTimeout(() => {
+      try {
+        axios({
+          method: "get",
+          withCredentials: true,
+          url: import.meta.env.VITE_API_URL + "forms",
         })
-        .catch((err) => {
-          toast.error("Unauthorized, please login..");
-          setTimeout(() => {
-            navigate("/login");
-          }, 1000);
-        });
-
-      return setLoading(false);
-    } catch (error) {
-      toast.error("Unauthorized, please login..");
-      navigate("/login");
-    }
+          .then((res) => {
+            setData(res.data);
+          })
+          .catch((err) => {
+            toast.error("Unauthorized, please login..");
+            setTimeout(() => {
+              navigate("/login");
+            }, 1000);
+          });
+      } catch (error) {
+        toast.error("Unauthorized, please login..");
+        navigate("/login");
+      }
+    }, 2000);
   }, []);
   if (loading) {
     return <Loading />;
