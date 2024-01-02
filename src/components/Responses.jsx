@@ -20,6 +20,7 @@ const Responses = () => {
         })
           .then((res) => {
             setData(res.data);
+            setLoading(false);
           })
           .catch((err) => {
             toast.error("Unauthorized, please login..");

@@ -17,9 +17,12 @@ const Login = () => {
         headers: { "Content-Type": "application/json" },
         data: JSON.stringify(loginInfo),
       });
-      setLoading(false);
+
       toast.success("You have been logged in !");
-      navigate("/dashboard");
+      setTimeout(() => {
+        setLoading(false);
+        navigate("/dashboard");
+      }, 2000);
       return;
     } catch (error) {
       setLoading(false);
