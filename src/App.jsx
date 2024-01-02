@@ -1,5 +1,9 @@
 import { useState } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  HashRouter,
+} from "react-router-dom";
 import Form from "./components/Form";
 import Login from "./components/Login";
 import Responses from "./components/Responses";
