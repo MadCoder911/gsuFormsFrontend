@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 const Form = () => {
   useEffect(() => {
     try {
@@ -14,7 +14,6 @@ const Form = () => {
           console.log(res);
         })
         .catch((err) => {
-          toast.error("Unauthorized, please login..");
           setTimeout(() => {}, 1000);
         });
 
