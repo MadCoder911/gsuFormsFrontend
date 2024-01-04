@@ -1,29 +1,107 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
+import ImagesModal from "./ImagesModal";
+import { FaInfo } from "react-icons/fa";
+import PaymentModal from "./PaymentModal";
+
 const Form = () => {
-  useEffect(() => {
+  // let currentdate = new Date();
+  // let datetime =
+  //   currentdate.getDay() +
+  //   "/" +
+  //   (currentdate.getMonth() + 1) +
+  //   "/" +
+  //   currentdate.getFullYear() +
+  //   " @ " +
+  //   currentdate.getHours() +
+  //   ":" +
+  //   currentdate.getMinutes() +
+  //   ":" +
+  //   currentdate.getSeconds();
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    identity: "internal",
+    major: "",
+    payment_method: "",
+    registered_at: "",
+    personal_id_front: "",
+    personal_id_back: "",
+    uni_id: "",
+  });
+  const [imagesModal, setImagesModal] = useState(false);
+  const [paymentModal, setPaymentModal] = useState(false);
+
+  const handleSubmit = async () => {
+    const date = new Date();
+    setForm({ ...form, registered_at: date });
+    if (form.phone.length !== 11) {
+      toast.error("Incorrect phone number !");
+      return;
+    } else if (form.major === "" || form.payment_method === "") {
+      toast.error("Please choose your major and payment method !");
+      return;
+    } else if (
+      form.personal_id_front === "" ||
+      form.personal_id_back === "" ||
+      form.uni_id === "" ||
+      form.personal_id_back === form.personal_id_front
+    ) {
+      toast.error("Incorrect Personal ID link !");
+      return;
+    } else if (
+      form.personal_id_back === form.personal_id_front ||
+      form.personal_id_back === form.uni_id
+    ) {
+      toast.error(
+        "Your personal ID and university ID can't have the same link !"
+      );
+      return;
+    } else if (form.name === "") {
+      toast.error("Please insert your name !");
+      return;
+    }
+
     try {
-      axios({
-        method: "get",
-        withCredentials: true,
+      const { data } = axios({
+        method: "POST",
         url: import.meta.env.VITE_API_URL + "forms",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        data: JSON.stringify(form),
       })
         .then((res) => {
-          console.log(res);
+          if (res.data.message) {
+            toast.error("This phone number is already registered");
+            return;
+          } else {
+            return toast.success("You have been registered !");
+          }
         })
         .catch((err) => {
-          setTimeout(() => {}, 1000);
+          toast.error("An error has occured");
         });
-
-      return;
     } catch (error) {
       return;
     }
-  });
+  };
   return (
     <div className="bg-blue-400   min-h-[100vh]  p-4 flex flex-col relative items-center ">
+      {imagesModal && (
+        <ImagesModal
+          imagesModal={imagesModal}
+          setImagesModal={setImagesModal}
+        />
+      )}
+      {paymentModal && (
+        <PaymentModal
+          paymentModal={paymentModal}
+          setPaymentModal={setPaymentModal}
+        />
+      )}
       <main className="bg-contact h-[100%] relative lg:w-[80%] w-[95%] flex-col flex  ">
         {/* <Link
           to={"/login"}
@@ -42,13 +120,21 @@ const Form = () => {
               name="name"
               id="name"
               placeholder="Full name"
+              value={form.name}
+              onChange={(e) => {
+                setForm({ ...form, name: e.target.value });
+              }}
               className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024]"
             />
             <input
-              type="email"
-              name="email"
-              id="email"
+              type="phone"
+              name="phone"
+              id="phone"
               placeholder="Phone"
+              value={form.phone}
+              onChange={(e) => {
+                setForm({ ...form, phone: e.target.value });
+              }}
               className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024]"
             />
             {/* <div className="flex gap-[20px]">
@@ -78,54 +164,69 @@ const Form = () => {
               </div>
             </div> */}
             <select
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Phone"
+              type="major"
+              name="major"
+              id="major"
+              placeholder="Major"
+              value={form.major}
+              onChange={(e) => {
+                setForm({ ...form, major: e.target.value });
+              }}
               className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024] text-gray-400"
             >
               <option value="" selected disabled>
                 Select your major
               </option>
 
-              <option value="x" className="">
+              <option value="Finance & Investment" className="">
                 Finance & Investment
               </option>
-              <option value="x" className="">
+              <option value="Finance & Accounting" className="">
                 Finance & Accounting
               </option>
-              <option value="x" className="">
+              <option value="Marketing" className="">
                 Marketing
               </option>
-              <option value="x" className="">
+              <option value=" Auditing" className="">
                 Auditing
               </option>
-              <option value="x" className="">
+              <option value="Risk & insurance" className="">
                 Risk & insurance
               </option>
-              <option value="x" className="">
+              <option value="BIS" className="">
                 BIS
               </option>
             </select>
+            <button
+              onClick={() => setPaymentModal(true)}
+              type="button"
+              className="bg-[#4FBBFB] w-[100%] p-2 flex justify-center items-center text-white font-medium rounded-[5px] shadow-[0px_7px_10px_0px_#00000024] hover:scale-105 transition-all ease-in-out"
+            >
+              Payment Info <FaInfo className="ml-[10px] " />
+            </button>
             <select
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Phone"
+              name="payment_method"
+              id="payment_method"
+              placeholder="Payment Method"
+              value={form.payment_method}
+              onChange={(e) => {
+                setForm({ ...form, payment_method: e.target.value });
+              }}
               className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024] text-gray-400"
             >
               <option value="" selected disabled>
                 Payment method
               </option>
 
-              <option value="x" className="">
+              <option value="instapay" className="">
                 Instapay
               </option>
-              <option value="x" className="">
+              <option value="link payment" className="">
                 Credit / Debit Card
               </option>
             </select>
             <button
+              onClick={() => setImagesModal(true)}
               type="button"
               className="bg-[#4FBBFB] w-[100%] p-2 flex justify-center text-white font-medium rounded-[5px] shadow-[0px_7px_10px_0px_#00000024] hover:scale-105 transition-all ease-in-out"
             >
@@ -135,7 +236,11 @@ const Form = () => {
               type="id_front"
               name="id_front"
               id="id_front"
-              placeholder="ID Front picture link"
+              value={form.personal_id_front}
+              onChange={(e) => {
+                setForm({ ...form, personal_id_front: e.target.value });
+              }}
+              placeholder="Personal ID Front picture link"
               className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024] "
             />
 
@@ -143,20 +248,26 @@ const Form = () => {
               type="id_back"
               name="id_back"
               id="id_back"
-              placeholder="ID Back picture link"
+              value={form.personal_id_back}
+              onChange={(e) => {
+                setForm({ ...form, personal_id_back: e.target.value });
+              }}
+              placeholder="Personal ID Back picture link"
               className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024]"
             />
             <input
-              type="id_back"
-              name="id_back"
-              id="id_back"
+              type="uni_id"
+              name="uni_id"
+              id="uni_id"
+              value={form.uni_id}
+              onChange={(e) => {
+                setForm({ ...form, uni_id: e.target.value });
+              }}
               placeholder="University ID Picture link"
               className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024]"
             />
             <button
-              onClick={() => {
-                toast.success("You have been registered !");
-              }}
+              onClick={() => handleSubmit()}
               type="button"
               className="bg-[#4FBBFB] py-2 flex justify-center text-white font-medium rounded-[5px] shadow-[0px_7px_10px_0px_#00000024] hover:scale-105 transition-all ease-in-out"
             >
