@@ -16,7 +16,7 @@ const PaymentModal = ({ paymentModal, setPaymentModal }) => {
         <div className="mb-[20px]">
           <p className="font-semibold">1- Instapay:</p>
           <p>
-            <span className="text-red-300 font-semibold">
+            <span className="text-red-500 font-semibold">
               Please note that:
             </span>{" "}
             We are not responsible if funds are transferred to an incorrect
@@ -29,7 +29,7 @@ const PaymentModal = ({ paymentModal, setPaymentModal }) => {
         <div>
           <p className="font-semibold">2- Credit / Debit card:</p>
           <p className="mt-[10px]">
-            <span className="font-bold text-red-300">Note:</span> Paying with
+            <span className="font-bold text-red-500">Note:</span> Paying with
             Credit / Debit card will apply additional 3% fees which is
             equivalent to 117 EGP in addition to your 3900 EGP payment.
           </p>
