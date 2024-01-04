@@ -43,7 +43,7 @@ const Responses = () => {
       <div>
         <div className="bg-blue-400 text-white   min-h-[100vh]  p-4 flex-col justify-center">
           <div className="bg-white text-black text-center text-[28px] font-bold rounded-[8px]">
-            Responses: {filteredData.length}{" "}
+            Responses: {data.length}{" "}
           </div>
 
           <div className="bg-white text-black p-3 mt-4 rounded-[8px]">
@@ -78,7 +78,7 @@ const Responses = () => {
               </div>
             </div>
             <div className="row mb-[20px] flex flex-col">
-              <label htmlFor="">Search by phone number</label>
+              <label htmlFor="">Filter by phone number</label>
               <input
                 type="email"
                 name="email"
@@ -88,7 +88,7 @@ const Responses = () => {
               />
             </div>
             <div className="row mb-[20px] flex flex-col">
-              <label htmlFor="">Search by Name</label>
+              <label htmlFor="">Filter by Name</label>
               <input
                 type="email"
                 name="email"
@@ -129,8 +129,9 @@ const Responses = () => {
               </select>
             </div>
           </div>
+          <p className="mt-4">{filteredData.length} Results found</p>
           <div className="flex mt-[30px] flex-wrap justify-center  gap-[30px]">
-            {data.map((item, i) => {
+            {filteredData.map((item, i) => {
               return (
                 <div
                   key={i}

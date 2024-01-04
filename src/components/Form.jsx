@@ -51,7 +51,7 @@ const Form = () => {
               placeholder="Phone"
               className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024]"
             />
-            <div className="flex gap-[20px]">
+            {/* <div className="flex gap-[20px]">
               <div className="row">
                 <input
                   id="bordered-checkbox-1"
@@ -76,7 +76,7 @@ const Form = () => {
                   Outcomer
                 </label>
               </div>
-            </div>
+            </div> */}
             <select
               type="email"
               name="email"
@@ -107,6 +107,52 @@ const Form = () => {
                 BIS
               </option>
             </select>
+            <select
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Phone"
+              className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024] text-gray-400"
+            >
+              <option value="" selected disabled>
+                Payment method
+              </option>
+
+              <option value="x" className="">
+                Instapay
+              </option>
+              <option value="x" className="">
+                Credit / Debit Card
+              </option>
+            </select>
+            <button
+              type="button"
+              className="bg-[#4FBBFB] w-[100%] p-2 flex justify-center text-white font-medium rounded-[5px] shadow-[0px_7px_10px_0px_#00000024] hover:scale-105 transition-all ease-in-out"
+            >
+              How to upload images ?
+            </button>
+            <input
+              type="id_front"
+              name="id_front"
+              id="id_front"
+              placeholder="ID Front picture link"
+              className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024] "
+            />
+
+            <input
+              type="id_back"
+              name="id_back"
+              id="id_back"
+              placeholder="ID Back picture link"
+              className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024]"
+            />
+            <input
+              type="id_back"
+              name="id_back"
+              id="id_back"
+              placeholder="University ID Picture link"
+              className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024]"
+            />
             <button
               onClick={() => {
                 toast.success("You have been registered !");
