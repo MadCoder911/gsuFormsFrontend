@@ -100,6 +100,7 @@ const Responses = () => {
       toast.error("Unauthorized, please login..");
       navigate("/login");
     }
+    console.log(data);
   }, []);
   if (loading) {
     return <Loading />;
@@ -220,6 +221,21 @@ const Responses = () => {
 
           <div className="flex flex-row mt-[30px] flex-wrap justify-center gap-[30px] w-[100%]">
             {filteredData.map((item, i) => {
+              const itemDate = new Date(item.createdAt);
+              const day =
+                itemDate.getDay() +
+                "/" +
+                itemDate.getMonth() +
+                1 +
+                "/" +
+                itemDate.getFullYear();
+              const time =
+                itemDate.getHours() +
+                ":" +
+                itemDate.getMinutes() +
+                ":" +
+                itemDate.getSeconds();
+              const date = `${day} @ ${time}`;
               return (
                 <div
                   key={i}
@@ -257,7 +273,11 @@ const Responses = () => {
                     <span className="font-bold mr-[5px]">
                       Personal ID Front:
                     </span>
-                    <a href={item.personal_id_front} target="_blank">
+                    <a
+                      href={item.personal_id_front}
+                      className="underline"
+                      target="_blank"
+                    >
                       Link
                     </a>
                   </p>
@@ -266,20 +286,24 @@ const Responses = () => {
                     <span className="font-bold mr-[5px]">
                       Personal ID Back:
                     </span>
-                    <a href={item.personal_id_back} target="_blank">
+                    <a
+                      href={item.personal_id_back}
+                      className="underline"
+                      target="_blank"
+                    >
                       Link
                     </a>
                   </p>
                   <p>
                     {" "}
                     <span className="font-bold mr-[5px]">Uni Id:</span>
-                    <a href={item.uni_id} target="_blank">
+                    <a href={item.uni_id} className="underline" target="_blank">
                       Link
                     </a>
                   </p>
                   <p className="flex">
                     <span className="font-bold mr-[5px]">Submitted at:</span>
-                    <p>{item.registered_at}</p>
+                    <p>{date}</p>
                   </p>
                 </div>
               );
