@@ -23,16 +23,16 @@ const Form = () => {
     }
   });
   return (
-    <div className="bg-blue-400   h-[100vh]  p-4 flex flex-col relative items-center justify-center">
+    <div className="bg-blue-400   min-h-[100vh]  p-4 flex flex-col relative items-center ">
       <main className="bg-contact h-[100%] relative lg:w-[80%] w-[95%] flex-col flex  ">
-        <Link
+        {/* <Link
           to={"/login"}
           className="bg-[#4FBBFB] py-2 flex justify-center w-[200px] absolute right-0  top-0 text-white font-medium rounded-[5px] shadow-[0px_7px_10px_0px_#00000024] hover:scale-105 transition-all ease-in-out"
         >
           Login
-        </Link>
+        </Link> */}
         <div className="container ">
-          <h1 className="text-white font-semibold relative w-[100%] mb-[50px] my-[120px] text-[30px] flex justify-center md:justify-start">
+          <h1 className="text-white font-semibold relative w-[100%] mb-[50px] mt-[50px] text-[30px] flex justify-center md:justify-start">
             Georgia Trip Registration Form
             <span className="absolute w-[100%]  border-b-[2px] border-[#00000013] bottom-[-20px]"></span>
           </h1>
