@@ -78,6 +78,17 @@ const Form = () => {
             toast.error("This phone number is already registered");
             return;
           } else {
+            setForm({
+              name: "",
+              phone: "",
+              identity: "internal",
+              major: "",
+              payment_method: "",
+              registered_at: "",
+              personal_id_front: "",
+              personal_id_back: "",
+              uni_id: "",
+            });
             return toast.success("You have been registered !");
           }
         })
