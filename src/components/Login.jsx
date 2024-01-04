@@ -10,13 +10,14 @@ const Login = () => {
   const login = async () => {
     try {
       setLoading(true);
-      await axios({
+      const { data } = await axios({
         method: "post",
         url: import.meta.env.VITE_API_URL + "login",
-        withCredentials: true,
+        // withCredentials: true,
         headers: { "Content-Type": "application/json" },
         data: JSON.stringify(loginInfo),
       });
+      localStorage.setItem("access_token", JSON.stringify(data.token));
 
       toast.success("You have been logged in !");
       setTimeout(() => {

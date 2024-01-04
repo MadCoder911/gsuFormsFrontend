@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useFetcher } from "react-router-dom";
-import { Navigate, useNavigate } from "react-router";
+import { Navigate, json, useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 import Loading from "./Loading";
 const Responses = () => {
@@ -11,29 +11,30 @@ const Responses = () => {
 
   useEffect(() => {
     setLoading(true);
-    setTimeout(() => {
-      try {
-        axios({
-          method: "get",
-          withCredentials: true,
-          url: import.meta.env.VITE_API_URL + "forms",
+    let token = JSON.parse(localStorage.getItem("access_token"));
+
+    try {
+      axios({
+        method: "get",
+        // withCredentials: true,
+        url: import.meta.env.VITE_API_URL + "forms",
+        headers: {
+          Authorization: `${token}`,
+        },
+      })
+        .then((res) => {
+          setData(res.data);
+          setLoading(false);
         })
-          .then((res) => {
-            setData(res.data);
-            setLoading(false);
-          })
-          .catch((err) => {
-            console.log(err, "ERRORR");
-            toast.error("Unauthorized, please login..");
-            setTimeout(() => {
-              navigate("/login");
-            }, 1000);
-          });
-      } catch (error) {
-        toast.error("Unauthorized, please login..");
-        navigate("/login");
-      }
-    }, 2000);
+        .catch((err) => {
+          setTimeout(() => {
+            navigate("/login");
+          }, 1000);
+        });
+    } catch (error) {
+      toast.error("Unauthorized, please login..");
+      navigate("/login");
+    }
   }, []);
   if (loading) {
     return <Loading />;
