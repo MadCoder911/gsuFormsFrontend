@@ -1,7 +1,7 @@
 const PaymentModal = ({ paymentModal, setPaymentModal }) => {
   return (
     <div
-      className={`z-[999] bg-[#ffffff50] absolute top-0 flex items-center justify-center w-[100%] h-[100%]`}
+      className={`z-[999] bg-[#000000ab] absolute top-0 flex items-center justify-center w-[100%] h-[100%]`}
     >
       <div className="bg-blue-400  z-[99999] p-4 rounded-[8px] max-h-[80%] overflow-y-scroll text-white max-w-[90%]">
         <div className="relative flex justify-between items-center">
