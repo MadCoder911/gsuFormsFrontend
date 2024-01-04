@@ -273,12 +273,8 @@ const Responses = () => {
                     <span className="font-bold mr-[5px]">
                       Personal ID Front:
                     </span>
-                    <a
-                      href={item.personal_id_front}
-                      className="underline"
-                      target="_blank"
-                    >
-                      Link
+                    <a href={"#"} className="underline">
+                      {item.personal_id_front}
                     </a>
                   </p>
                   <p>
@@ -286,19 +282,15 @@ const Responses = () => {
                     <span className="font-bold mr-[5px]">
                       Personal ID Back:
                     </span>
-                    <a
-                      href={item.personal_id_back}
-                      className="underline"
-                      target="_blank"
-                    >
-                      Link
+                    <a href={"#"} className="underline">
+                      item.personal_id_back
                     </a>
                   </p>
                   <p>
                     {" "}
                     <span className="font-bold mr-[5px]">Uni Id:</span>
-                    <a href={item.uni_id} className="underline" target="_blank">
-                      Link
+                    <a href={"#"} className="underline">
+                      {item.uni_id}
                     </a>
                   </p>
                   <p className="flex">
