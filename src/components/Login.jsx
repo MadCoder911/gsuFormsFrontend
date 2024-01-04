@@ -20,10 +20,10 @@ const Login = () => {
       localStorage.setItem("access_token", JSON.stringify(data.token));
 
       toast.success("You have been logged in !");
-      setTimeout(() => {
-        setLoading(false);
-        navigate("/dashboard");
-      }, 2000);
+
+      setLoading(false);
+      navigate("/dashboard");
+
       return;
     } catch (error) {
       setLoading(false);
@@ -32,10 +32,10 @@ const Login = () => {
   };
   return (
     <div className="bg-blue-400   h-[100vh]  p-4 flex justify-center">
-      <main className="bg-contact h-[100%] lg:w-[80%] w-[95%] flex justify-center ">
+      <main className="bg-contact h-[100%] lg:w-[30%] w-[95%] flex justify-center ">
         <div className="container ">
-          <h1 className="text-white font-semibold relative w-[100%] mb-[50px] my-[120px] text-[30px] flex justify-center md:justify-start">
-            Georgia seniors form dashboard
+          <h1 className="text-white font-semibold relative w-[100%] mb-[50px] my-[120px] text-[30px] text-center flex justify-center ">
+            Georgia Seniors Dashboard
             <span className="absolute w-[100%]  border-b-[2px] border-[#00000013] bottom-[-20px]"></span>
           </h1>
           <form className="flex flex-col gap-[20px] flex-wrap justify-center md:justify-start mb-[80px] ">

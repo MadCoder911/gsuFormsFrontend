@@ -7,6 +7,7 @@ import Loading from "./Loading";
 const Responses = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([{}]);
+  const [filteredData, setFilteredData] = useState([{}]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,12 +25,11 @@ const Responses = () => {
       })
         .then((res) => {
           setData(res.data);
+          setFilteredData(res.data);
           setLoading(false);
         })
         .catch((err) => {
-          setTimeout(() => {
-            navigate("/login");
-          }, 1000);
+          navigate("/login");
         });
     } catch (error) {
       toast.error("Unauthorized, please login..");
@@ -43,7 +43,91 @@ const Responses = () => {
       <div>
         <div className="bg-blue-400 text-white   min-h-[100vh]  p-4 flex-col justify-center">
           <div className="bg-white text-black text-center text-[28px] font-bold rounded-[8px]">
-            Responses: {data.length}{" "}
+            Responses: {filteredData.length}{" "}
+          </div>
+
+          <div className="bg-white text-black p-3 mt-4 rounded-[8px]">
+            <div className="row flex justify-between">
+              <p className="font-bold text-[20px] mb-[15px] ">Filters</p>
+              <p className="font-bold text-[20px] mb-[15px] "></p>
+            </div>
+            <div className="flex">
+              <div className="row mr-[20px]">
+                <input
+                  id="bordered-checkbox-1"
+                  type="checkbox"
+                  value=""
+                  name="bordered-checkbox"
+                  class="w-4 h-4 cursor-pointer shadow-[0px_7px_10px_0px_#00000024] text-blue-600 mr-2 border-0 bg-gray-100 border-whitee rounded focus:ring-0 dark:focus:ring-white dark:ring-offset-white "
+                />
+                <label htmlFor="" className="font-semibold text-black">
+                  Georgians
+                </label>
+              </div>
+              <div className="row mb-[20px]">
+                <input
+                  id="bordered-checkbox-1"
+                  type="checkbox"
+                  value=""
+                  name="bordered-checkbox"
+                  class="w-4 h-4 cursor-pointer shadow-[0px_7px_10px_0px_#00000024] text-blue-600 mr-2 border-0 bg-gray-100 border-whitee rounded focus:ring-0 dark:focus:ring-white dark:ring-offset-white "
+                />
+                <label htmlFor="" className="font-semibold text-black">
+                  Outcomers
+                </label>
+              </div>
+            </div>
+            <div className="row mb-[20px] flex flex-col">
+              <label htmlFor="">Search by phone number</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Phone"
+                className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024]"
+              />
+            </div>
+            <div className="row mb-[20px] flex flex-col">
+              <label htmlFor="">Search by Name</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Name"
+                className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024]"
+              />
+            </div>
+            <div className="row mb-[20px] flex flex-col">
+              <label htmlFor="">Filter by major</label>
+              <select
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Phone"
+                className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024] text-gray-400"
+              >
+                <option value="">All</option>
+
+                <option value="x" className="">
+                  Finance & Investment
+                </option>
+                <option value="x" className="">
+                  Finance & Accounting
+                </option>
+                <option value="x" className="">
+                  Marketing
+                </option>
+                <option value="x" className="">
+                  Auditing
+                </option>
+                <option value="x" className="">
+                  Risk & insurance
+                </option>
+                <option value="x" className="">
+                  BIS
+                </option>
+              </select>
+            </div>
           </div>
           <div className="flex mt-[30px] flex-wrap justify-center  gap-[30px]">
             {data.map((item, i) => {
