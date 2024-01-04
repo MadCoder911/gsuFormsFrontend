@@ -9,7 +9,72 @@ const Responses = () => {
   const [data, setData] = useState([{}]);
   const [filteredData, setFilteredData] = useState([{}]);
   const [loading, setLoading] = useState(true);
+  const [filters, setFilters] = useState({
+    internal: false,
+    outcomer: false,
+    phone: "",
+    name: "",
+    major: "",
+  });
+  const handleFilters = (property, value) => {
+    console.log(property, value);
+    setFilters({ ...filters, [property]: value });
+  };
+  useEffect(() => {
+    let mock = data;
+    if (filters.phone !== "") {
+      const filteredPhone = mock.filter((item) =>
+        item.phone.includes(filters.phone)
+      );
+      mock = filteredPhone;
+    }
+    if (filters.name !== "") {
+      const filteredName = mock.filter((item) =>
+        item.name.toLowerCase().includes(filters.name.toLowerCase())
+      );
+      mock = filteredName;
+    }
+    if (filters.major !== "") {
+      const filteredMajor = mock.filter((item) =>
+        item.major.includes(filters.major)
+      );
+      mock = filteredMajor;
+    }
 
+    if (filters.internal === false && filters.outcomer === false) {
+      const filteredOutcomer = mock.filter(
+        (item) => item.identity === "outcomer" || item.identity === "internal"
+      );
+      mock = filteredOutcomer;
+    } else {
+      if (filters.internal) {
+        const filteredInternal = mock.filter(
+          (item) => item.identity === "internal"
+        );
+        mock = filteredInternal;
+      }
+      if (!filters.internal) {
+        const filteredInternal = mock.filter(
+          (item) => item.identity !== "internal"
+        );
+        mock = filteredInternal;
+      }
+      //
+      if (filters.outcomer) {
+        const filteredOutcomer = mock.filter(
+          (item) => item.identity === "outcomer"
+        );
+        mock = filteredOutcomer;
+      }
+      if (!filters.outcomer) {
+        const filteredOutcomer = mock.filter(
+          (item) => item.identity !== "outcomer"
+        );
+        mock = filteredOutcomer;
+      }
+    }
+    setFilteredData(mock);
+  }, [filters]);
   useEffect(() => {
     setLoading(true);
     let token = JSON.parse(localStorage.getItem("access_token"));
@@ -58,7 +123,11 @@ const Responses = () => {
                 <input
                   id="bordered-checkbox-1"
                   type="checkbox"
-                  value=""
+                  value="internal"
+                  checked={filters.internal}
+                  onChange={() =>
+                    setFilters({ ...filters, internal: !filters.internal })
+                  }
                   name="bordered-checkbox"
                   class="w-4 h-4 cursor-pointer shadow-[0px_7px_10px_0px_#00000024] text-blue-600 mr-2 border-0 bg-gray-100 border-whitee rounded focus:ring-0 dark:focus:ring-white dark:ring-offset-white "
                 />
@@ -70,7 +139,11 @@ const Responses = () => {
                 <input
                   id="bordered-checkbox-1"
                   type="checkbox"
-                  value=""
+                  value="external"
+                  checked={filters.outcomer}
+                  onChange={() =>
+                    setFilters({ ...filters, outcomer: !filters.outcomer })
+                  }
                   name="bordered-checkbox"
                   class="w-4 h-4 cursor-pointer shadow-[0px_7px_10px_0px_#00000024] text-blue-600 mr-2 border-0 bg-gray-100 border-whitee rounded focus:ring-0 dark:focus:ring-white dark:ring-offset-white "
                 />
@@ -84,6 +157,8 @@ const Responses = () => {
                 Filter by phone number
               </label>
               <input
+                onChange={(e) => handleFilters("phone", e.target.value)}
+                value={filters.phone}
                 type="email"
                 name="email"
                 id="email"
@@ -99,6 +174,8 @@ const Responses = () => {
                 type="email"
                 name="email"
                 id="email"
+                onChange={(e) => handleFilters("name", e.target.value)}
+                value={filters.name}
                 placeholder="Name"
                 className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024]"
               />
@@ -111,27 +188,29 @@ const Responses = () => {
                 type="email"
                 name="email"
                 id="email"
+                onChange={(e) => handleFilters("major", e.target.value)}
+                value={filters.major}
                 placeholder="Phone"
                 className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024] text-gray-400"
               >
                 <option value="">All</option>
 
-                <option value="x" className="">
+                <option value="finance&investment" className="">
                   Finance & Investment
                 </option>
-                <option value="x" className="">
+                <option value="finance&accounting" className="">
                   Finance & Accounting
                 </option>
-                <option value="x" className="">
+                <option value="marketing" className="">
                   Marketing
                 </option>
-                <option value="x" className="">
+                <option value="auditing" className="">
                   Auditing
                 </option>
-                <option value="x" className="">
+                <option value="risk&insurance" className="">
                   Risk & insurance
                 </option>
-                <option value="x" className="">
+                <option value="bis" className="">
                   BIS
                 </option>
               </select>
@@ -176,21 +255,27 @@ const Responses = () => {
                   <p>
                     {" "}
                     <span className="font-bold mr-[5px]">
-                      Personal ID Frobt:
+                      Personal ID Front:
                     </span>
-                    {item.personal_id_front}
+                    <a href={item.personal_id_front} target="_blank">
+                      Link
+                    </a>
                   </p>
                   <p>
                     {" "}
                     <span className="font-bold mr-[5px]">
                       Personal ID Back:
                     </span>
-                    {item.personal_id_back}
+                    <a href={item.personal_id_back} target="_blank">
+                      Link
+                    </a>
                   </p>
                   <p>
                     {" "}
                     <span className="font-bold mr-[5px]">Uni Id:</span>
-                    {item.uni_id}
+                    <a href={item.uni_id} target="_blank">
+                      Link
+                    </a>
                   </p>
                   <p className="flex">
                     <span className="font-bold mr-[5px]">Submitted at:</span>

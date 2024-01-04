@@ -95,7 +95,7 @@ const Form = () => {
             setForm({
               name: "",
               phone: "",
-              identity: "internal",
+              identity: "internal", //or outcomer
               major: "",
               payment_method: "",
               registered_at: "",
@@ -147,7 +147,7 @@ const Form = () => {
               placeholder="Full name"
               value={form.name}
               onChange={(e) => {
-                setForm({ ...form, name: e.target.value });
+                setForm({ ...form, name: e.target.value.toLowerCase() });
               }}
               className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024]"
             />
@@ -195,7 +195,7 @@ const Form = () => {
               placeholder="Major"
               value={form.major}
               onChange={(e) => {
-                setForm({ ...form, major: e.target.value });
+                setForm({ ...form, major: e.target.value.toLowerCase() });
               }}
               className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024] text-gray-400"
             >
@@ -203,22 +203,22 @@ const Form = () => {
                 Select your major
               </option>
 
-              <option value="Finance & Investment" className="">
+              <option value="finance&investment" className="">
                 Finance & Investment
               </option>
-              <option value="Finance & Accounting" className="">
+              <option value="finance&accounting" className="">
                 Finance & Accounting
               </option>
-              <option value="Marketing" className="">
+              <option value="marketing" className="">
                 Marketing
               </option>
-              <option value=" Auditing" className="">
+              <option value="auditing" className="">
                 Auditing
               </option>
-              <option value="Risk & insurance" className="">
+              <option value="risk&insurance" className="">
                 Risk & insurance
               </option>
-              <option value="BIS" className="">
+              <option value="bis" className="">
                 BIS
               </option>
             </select>
@@ -235,7 +235,10 @@ const Form = () => {
               placeholder="Payment Method"
               value={form.payment_method}
               onChange={(e) => {
-                setForm({ ...form, payment_method: e.target.value });
+                setForm({
+                  ...form,
+                  payment_method: e.target.value.toLowerCase(),
+                });
               }}
               className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024] text-gray-400"
             >
