@@ -129,8 +129,7 @@ const Responses = () => {
                   onChange={() =>
                     setFilters({ ...filters, internal: !filters.internal })
                   }
-                  name="bordered-checkbox"
-                  class="w-4 h-4 cursor-pointer shadow-[0px_7px_10px_0px_#00000024] text-blue-600 mr-2 border-0 bg-gray-100 border-whitee rounded focus:ring-0 dark:focus:ring-white dark:ring-offset-white "
+                  className="w-4 h-4 cursor-pointer mr-2 border-0 ring-0 outline-none "
                 />
                 <label htmlFor="" className="font-semibold  text-white ">
                   Georgians
@@ -145,8 +144,7 @@ const Responses = () => {
                   onChange={() =>
                     setFilters({ ...filters, outcomer: !filters.outcomer })
                   }
-                  name="bordered-checkbox"
-                  class="w-4 h-4 cursor-pointer shadow-[0px_7px_10px_0px_#00000024] text-blue-600 mr-2 border-0 bg-gray-100 border-whitee rounded focus:ring-0 dark:focus:ring-white dark:ring-offset-white "
+                  className="w-4 h-4 cursor-pointer mr-2 border-0 ring-0 outline-none"
                 />
                 <label htmlFor="" className="font-semibold text-white ">
                   Outcomers
