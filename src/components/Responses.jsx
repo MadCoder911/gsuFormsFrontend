@@ -273,7 +273,7 @@ const Responses = () => {
                     <span className="font-bold mr-[5px]">
                       Personal ID Front:
                     </span>
-                    <a href={"#"} className="underline">
+                    <a href={item.personal_id_front} className="underline">
                       {item.personal_id_front}
                     </a>
                   </p>
@@ -282,14 +282,14 @@ const Responses = () => {
                     <span className="font-bold mr-[5px]">
                       Personal ID Back:
                     </span>
-                    <a href={"#"} className="underline">
-                      item.personal_id_back
+                    <a href={item.personal_id_back} className="underline">
+                      {item.personal_id_back}
                     </a>
                   </p>
                   <p>
                     {" "}
                     <span className="font-bold mr-[5px]">Uni Id:</span>
-                    <a href={"#"} className="underline">
+                    <a href={item.uni_id} className="underline">
                       {item.uni_id}
                     </a>
                   </p>
