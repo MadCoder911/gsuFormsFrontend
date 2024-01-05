@@ -52,8 +52,8 @@ const PaymentModal = ({ paymentModal, setPaymentModal }) => {
             is equivalent to 117 EGP in addition to your 3900 EGP payment.
           </p>
           <p className="mt-[10px]">
-            -There are different installement plans available if decided to pay
-            using the link below.
+            -There are different installement plans available if you decided to
+            pay using the link below.
           </p>
           <p className="">
             -You can pay using your Credit / Debit card through this link:{" "}
