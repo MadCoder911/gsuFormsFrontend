@@ -17,25 +17,49 @@ const PaymentModal = ({ paymentModal, setPaymentModal }) => {
           <p className="font-semibold">1- Instapay:</p>
           <p>
             <span className="text-red-500 font-semibold">
-              Please note that:
+              -Please note that:
             </span>{" "}
             We are not responsible if funds are transferred to an incorrect
             instapay address.
           </p>
           <p className="mt-[10px]">
-            -You can pay transfering 3900 EGP to xxxx@instapay{" "}
+            -You can pay transfering 3900 EGP to the bank bank account below
+            through instapay{" "}
+          </p>
+          <p>
+            <span className="font-semibold">-Bank Name:</span> Commercial
+            International Bank CIB
+          </p>
+          <p>
+            <span className="font-semibold">-Branch:</span> 1st Settlement,
+            Cairo
+          </p>
+          <p>
+            <span className="font-semibold">-Account Name:</span> Footloose
+            Egypt
+          </p>
+          <p>
+            <span className="font-semibold">-Account Number:</span> 100032308327
           </p>
         </div>
         <div>
           <p className="font-semibold">2- Credit / Debit card:</p>
-          <p className="mt-[10px]">
-            <span className="font-bold text-red-500">Note:</span> Paying with
-            Credit / Debit card will apply additional 3% fees which is
-            equivalent to 117 EGP in addition to your 3900 EGP payment.
+          <p className="">
+            <span className="font-semibold text-red-500">
+              -Please note that:
+            </span>{" "}
+            Paying with Credit / Debit card will apply additional 3% fees which
+            is equivalent to 117 EGP in addition to your 3900 EGP payment.
           </p>
           <p className="mt-[10px]">
-            -You can pay using your Credit / Debit card through this link:
-            wwww.test.com
+            -There are different installement plans available if decided to pay
+            using the link below.
+          </p>
+          <p className="">
+            -You can pay using your Credit / Debit card through this link:{" "}
+            <a href="https://www.easykash.net/VLR7815" className="underline">
+              https://www.easykash.net/VLR7815
+            </a>
           </p>
         </div>
       </div>
