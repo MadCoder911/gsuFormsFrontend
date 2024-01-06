@@ -52,7 +52,10 @@ const Form = () => {
       form.personal_id_front === "" ||
       form.personal_id_back === "" ||
       form.uni_id === "" ||
-      form.personal_id_back === form.personal_id_front
+      form.personal_id_back === form.personal_id_front ||
+      !form.uni_id.includes("https://ibb") ||
+      !form.personal_id_back.includes("https://ibb") ||
+      !form.personal_id_front.includes("https://ibb")
     ) {
       toast.error("Incorrect ID link !");
       return;
