@@ -41,6 +41,9 @@ const PaymentModal = ({ paymentModal, setPaymentModal }) => {
           <p>
             <span className="font-semibold">-Account Number:</span> 100032308327
           </p>
+          <p>
+            <span className="font-semibold">-Phone Number:</span> 01019990595
+          </p>
         </div>
         <div>
           <p className="font-semibold">2- Credit / Debit card:</p>
