@@ -35,9 +35,7 @@ const Form = () => {
   const [paymentModal, setPaymentModal] = useState(false);
 
   const handleSubmit = async () => {
-    const itemDate = new Date();
-
-    setForm({ ...form, registered_at: date });
+    setForm({ ...form, registered_at: "date" });
     if (form.phone.length !== 11) {
       toast.error("Incorrect phone number !");
       return;
