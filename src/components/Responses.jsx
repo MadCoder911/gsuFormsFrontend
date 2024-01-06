@@ -293,10 +293,10 @@ const Responses = () => {
                       {item.uni_id}
                     </a>
                   </p>
-                  <p className="flex">
+                  {/* <p className="flex">
                     <span className="font-bold mr-[5px]">Submitted at:</span>
                     <p>{date}</p>
-                  </p>
+                  </p> */}
                 </div>
               );
             })}
