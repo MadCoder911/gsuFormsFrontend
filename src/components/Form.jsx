@@ -36,11 +36,17 @@ const Form = () => {
 
   const handleSubmit = async () => {
     setForm({ ...form, registered_at: "date" });
-    if (form.phone.length !== 11) {
+    if (form.name === "") {
+      toast.error("Please insert your name !");
+      return;
+    } else if (form.phone.length !== 11) {
       toast.error("Incorrect phone number !");
       return;
-    } else if (form.major === "" || form.payment_method === "") {
-      toast.error("Please choose your major and payment method !");
+    } else if (form.major === "") {
+      toast.error("Please choose your major !");
+      return;
+    } else if (form.payment_method === "") {
+      toast.error("Please choose your payment method !");
       return;
     } else if (
       form.personal_id_front === "" ||
@@ -48,7 +54,7 @@ const Form = () => {
       form.uni_id === "" ||
       form.personal_id_back === form.personal_id_front
     ) {
-      toast.error("Incorrect Personal ID link !");
+      toast.error("Incorrect ID link !");
       return;
     } else if (
       form.personal_id_back === form.personal_id_front ||
@@ -57,9 +63,6 @@ const Form = () => {
       toast.error(
         "Your personal ID and university ID can't have the same link !"
       );
-      return;
-    } else if (form.name === "") {
-      toast.error("Please insert your name !");
       return;
     }
 
