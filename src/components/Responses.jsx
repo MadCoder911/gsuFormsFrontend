@@ -297,6 +297,13 @@ const Responses = () => {
                     <span className="font-bold mr-[5px]">Submitted at:</span>
                     <p>{date}</p>
                   </p> */}
+                  <p>
+                    {" "}
+                    <span className="font-bold mr-[5px]">Payment SS:</span>
+                    <a href={item.payment_pic} className="underline">
+                      {item.payment_pic}
+                    </a>
+                  </p>
                 </div>
               );
             })}
