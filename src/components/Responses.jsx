@@ -219,6 +219,7 @@ const Responses = () => {
 
           <div className="flex flex-row mt-[30px] flex-wrap justify-center gap-[30px] w-[100%]">
             {filteredData.map((item, i) => {
+              console.log(item);
               const itemDate = new Date(item.createdAt);
               const day =
                 itemDate.getDay() +
@@ -292,10 +293,10 @@ const Responses = () => {
                       {item.uni_id}
                     </a>
                   </p>
-                  {/* <p className="flex">
+                  <p className="flex">
                     <span className="font-bold mr-[5px]">Submitted at:</span>
                     <p>{date}</p>
-                  </p> */}
+                  </p>
                 </div>
               );
             })}
