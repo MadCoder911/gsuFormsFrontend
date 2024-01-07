@@ -17,7 +17,6 @@ const Responses = () => {
     major: "",
   });
   const handleFilters = (property, value) => {
-    console.log(property, value);
     setFilters({ ...filters, [property]: value });
   };
   useEffect(() => {
@@ -98,12 +97,15 @@ const Responses = () => {
         });
     } catch (error) {
       toast.error("Unauthorized, please login..");
-      navigate("/login");
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
     }
-    console.log(data);
   }, []);
   if (loading) {
-    return <Loading />;
+    return (
+      <Loading style="w-[100px] h-[100px] absolute top-[45%] lg:left-[47%] left-[40%] " />
+    );
   } else
     return (
       <div>
@@ -219,10 +221,9 @@ const Responses = () => {
 
           <div className="flex flex-row mt-[30px] flex-wrap justify-center gap-[30px] w-[100%]">
             {filteredData.map((item, i) => {
-              console.log(item);
               const itemDate = new Date(item.createdAt);
               const day =
-                itemDate.getDay() +
+                item.createdAt.substring(8, 10) +
                 "/" +
                 itemDate.getMonth() +
                 1 +
@@ -234,8 +235,8 @@ const Responses = () => {
                 itemDate.getMinutes() +
                 ":" +
                 itemDate.getSeconds();
-              const date = `${day} @ ${time}`;
-              console.log(item);
+              const date = `${day} at ${time}`;
+
               return (
                 <div
                   key={i}
