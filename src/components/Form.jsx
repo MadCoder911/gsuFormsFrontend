@@ -63,7 +63,8 @@ const Form = () => {
       form.personal_id_back === form.personal_id_front ||
       !form.uni_id.includes("https://ibb") ||
       !form.personal_id_back.includes("https://ibb") ||
-      !form.personal_id_front.includes("https://ibb")
+      !form.personal_id_front.includes("https://ibb") ||
+      !form.payment_pic.includes("https://ibb")
     ) {
       setLoading(false);
       toast.error("Incorrect ID link !");
