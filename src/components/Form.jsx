@@ -8,19 +8,6 @@ import PaymentModal from "./PaymentModal";
 import Loading from "./Loading";
 
 const Form = () => {
-  // let currentdate = new Date();
-  // let datetime =
-  //   currentdate.getDay() +
-  //   "/" +
-  //   (currentdate.getMonth() + 1) +
-  //   "/" +
-  //   currentdate.getFullYear() +
-  //   " @ " +
-  //   currentdate.getHours() +
-  //   ":" +
-  //   currentdate.getMinutes() +
-  //   ":" +
-  //   currentdate.getSeconds();
   const [form, setForm] = useState({
     name: "",
     phone: "",
@@ -38,8 +25,9 @@ const Form = () => {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
+    let currentdate = new Date();
     setLoading(true);
-    setForm({ ...form, registered_at: "date" });
+    setForm({ ...form, registered_at: currentdate });
     if (form.name === "") {
       toast.error("Please insert your name !");
       setLoading(false);
@@ -255,6 +243,13 @@ const Form = () => {
                     </span>{" "}
                     We are not responsible if funds are transferred to an
                     incorrect instapay address.
+                  </p>
+                  <p className="mt-[0px]">
+                    <span className="text-red-500 font-semibold">
+                      -Don't forget to
+                    </span>{" "}
+                    send a screenshot of your payment to{" "}
+                    <span className="font-bold">01019990595</span>
                   </p>
                   <p className="mt-[10px]">
                     -You can pay transfering 3900 EGP to the bank bank account
