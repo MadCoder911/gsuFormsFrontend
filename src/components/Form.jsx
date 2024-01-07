@@ -25,9 +25,10 @@ const Form = () => {
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async () => {
-    let currentdate = new Date();
+    const currentdate = new Date();
     setLoading(true);
-    setForm({ ...form, registered_at: currentdate });
+    setForm({ ...form, registered_at: "" });
+
     if (form.name === "") {
       toast.error("Please insert your name !");
       setLoading(false);
