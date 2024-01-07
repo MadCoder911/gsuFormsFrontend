@@ -245,7 +245,7 @@ const Form = () => {
             </button> */}
             <p className="text-white">Available payment methods are:</p>
             <div>
-              <div className="bg-[#4FBBFB] p-2 text-white rounded-[8px]">
+              <div className="bg-[#4FBBFB] shadow-[0px_7px_10px_0px_#00000024] p-2 text-white rounded-[8px]">
                 <div className="mb-[20px]">
                   <p className="font-semibold">1- Instapay:</p>
                   <p>
@@ -281,7 +281,7 @@ const Form = () => {
                   </p>
                 </div>
               </div>
-              <div className="bg-[#4FBBFB] mt-[20px] p-2 text-white rounded-[8px]">
+              <div className="bg-[#4FBBFB] shadow-[0px_7px_10px_0px_#00000024] mt-[20px] p-2 text-white rounded-[8px]">
                 <p className="font-semibold">2- Credit / Debit card:</p>
                 <p className="">
                   <span className="font-semibold text-red-500">
@@ -331,14 +331,18 @@ const Form = () => {
                 Credit / Debit Card
               </option>
             </select>
-            <button
-              onClick={() => setImagesModal(true)}
-              type="button"
-              className="bg-[#4FBBFB] w-[100%] p-2 flex  justify-center text-white items-center font-medium rounded-[5px] shadow-[0px_7px_10px_0px_#00000024] hover:scale-105 transition-all ease-in-out"
-            >
-              How to upload images ?
-              <span className="text-[10px] ml-[12px] underline">Click me</span>
-            </button>
+            <div className="flex justify-center items-center w-[100%]">
+              <p className="font-bold text-white mr-[20px]">
+                How to upload images?
+              </p>
+              <button
+                onClick={() => setImagesModal(true)}
+                type="button"
+                className="bg-[#4FBBFB]  p-2 flex w-[40%] justify-center text-white items-center font-medium rounded-[5px] shadow-[0px_7px_10px_0px_#00000024] hover:scale-105 transition-all ease-in-out"
+              >
+                Click Me
+              </button>
+            </div>
             <input
               type="id_front"
               name="id_front"
@@ -386,8 +390,8 @@ const Form = () => {
             />
             <p className="text-red-500 font-semibold">
               Please be advised that if incorrect image links are provided in
-              the form submission, it will not be considered for further
-              processing.
+              the form submission, your registeration not be considered for
+              further processing as it will be automatically deleted.
             </p>
             <button
               onClick={() => handleSubmit()}
