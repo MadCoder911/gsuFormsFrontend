@@ -11,7 +11,7 @@ const Form = () => {
   const [form, setForm] = useState({
     name: "",
     phone: "",
-    identity: "internal",
+    identity: "",
     major: "",
     payment_method: "",
     registered_at: "",
@@ -76,6 +76,9 @@ const Form = () => {
     ) {
       setLoading(false);
       toast.error("Your payment screenshot is invalid");
+      return;
+    } else if (form.identity === "") {
+      toast.error("Please select wether you are internal or outcomer");
       return;
     } else {
       try {
@@ -166,12 +169,19 @@ const Form = () => {
               }}
               className="rounded-[5px] py-[7px] px-2 font-semibold focus:outline-none shadow-[0px_7px_10px_0px_#00000024]"
             />
-            {/* <div className="flex gap-[20px]">
+            <div className="flex gap-[20px]">
               <div className="row">
                 <input
                   id="bordered-checkbox-1"
                   type="checkbox"
-                  value=""
+                  value="internal"
+                  checked={form.identity === "internal"}
+                  onChange={(e) => {
+                    setForm({
+                      ...form,
+                      identity: e.target.value.toLowerCase(),
+                    });
+                  }}
                   name="bordered-checkbox"
                   class="w-4 h-4 cursor-pointer shadow-[0px_7px_10px_0px_#00000024] text-blue-600 mr-2 border-0 bg-gray-100 border-whitee rounded focus:ring-0 dark:focus:ring-white dark:ring-offset-white "
                 />
@@ -183,7 +193,14 @@ const Form = () => {
                 <input
                   id="bordered-checkbox-1"
                   type="checkbox"
-                  value=""
+                  value="outcomer"
+                  checked={form.identity === "outcomer"}
+                  onChange={(e) => {
+                    setForm({
+                      ...form,
+                      identity: e.target.value.toLowerCase(),
+                    });
+                  }}
                   name="bordered-checkbox"
                   class="w-4 h-4 cursor-pointer shadow-[0px_7px_10px_0px_#00000024] text-blue-600 mr-2 border-0 bg-gray-100 border-whitee rounded focus:ring-0 dark:focus:ring-white dark:ring-offset-white "
                 />
@@ -191,7 +208,7 @@ const Form = () => {
                   Outcomer
                 </label>
               </div>
-            </div> */}
+            </div>
             <select
               type="major"
               name="major"
