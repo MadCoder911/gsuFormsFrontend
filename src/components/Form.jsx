@@ -122,7 +122,7 @@ const Form = () => {
   };
   return (
     <div className="bg-blue-400   min-h-[100vh]  p-4 flex flex-col relative items-center ">
-      {imagesModal && (
+      {/* {imagesModal && (
         <ImagesModal
           imagesModal={imagesModal}
           setImagesModal={setImagesModal}
@@ -133,7 +133,7 @@ const Form = () => {
           paymentModal={paymentModal}
           setPaymentModal={setPaymentModal}
         />
-      )}
+      )} */}
       <main className="bg-contact h-[100%] relative lg:w-[80%] w-[95%] flex-col flex  ">
         {/* <Link
           to={"/login"}
@@ -143,10 +143,10 @@ const Form = () => {
         </Link> */}
         <div className="container ">
           <h1 className="text-white font-semibold relative w-[100%] mb-[50px] mt-[50px] text-[30px] flex justify-center md:justify-start">
-            Georgia Trip Registration Form
+            {/* Georgia Trip Registration Form */}Form has been closed
             <span className="absolute w-[100%]  border-b-[2px] border-[#00000013] bottom-[-20px]"></span>
           </h1>
-          <form className="flex flex-col gap-[20px] flex-wrap justify-center md:justify-start mb-[80px] ">
+          {/*  <form className="flex flex-col gap-[20px] flex-wrap justify-center md:justify-start mb-[80px] ">
             <input
               type="text"
               name="name"
@@ -249,7 +249,7 @@ const Form = () => {
               className="bg-[#4FBBFB] w-[100%] p-2 flex justify-center items-center text-white font-medium rounded-[5px] shadow-[0px_7px_10px_0px_#00000024] hover:scale-105 transition-all ease-in-out"
             >
               Payment Info <FaInfo className="ml-[10px] " />
-            </button> */}
+            </button>
             <p className="text-white">Available payment methods are:</p>
             <div>
               <div className="bg-[#4FBBFB] shadow-[0px_7px_10px_0px_#00000024] p-2 text-white rounded-[8px]">
@@ -414,7 +414,7 @@ const Form = () => {
             >
               {loading && <Loading />} Register
             </button>
-          </form>
+          </form> */}
         </div>
       </main>
     </div>
