@@ -240,8 +240,12 @@ const Responses = () => {
               return (
                 <div
                   key={i}
-                  className="capitalize bg-white text-black w-[100%] lg:max-w-[400px] rounded-[8px] px-2 py-4 shadow-[0px_7px_10px_0px_#00000024]"
+                  className="capitalize bg-white text-black w-[100%] relative lg:max-w-[400px] rounded-[8px] px-2 py-4 pt-[30px] shadow-[0px_7px_10px_0px_#00000024]"
                 >
+                  <p className="absolute right-[20px] top-[10px]">
+                    <span className="font-bold text-[18px] mr-[2px]">#</span>
+                    {i + 1}
+                  </p>
                   <p>
                     {" "}
                     <span className="font-bold mr-[5px]">Name:</span>{" "}

@@ -49,7 +49,6 @@ const Form = () => {
       form.personal_id_front === "" ||
       form.personal_id_back === "" ||
       form.uni_id === "" ||
-      form.personal_id_back === form.personal_id_front ||
       !form.uni_id.includes("https://ibb") ||
       !form.personal_id_back.includes("https://ibb") ||
       !form.personal_id_front.includes("https://ibb") ||
@@ -77,44 +76,45 @@ const Form = () => {
     ) {
       setLoading(false);
       toast.error("Your payment screenshot is invalid");
-    }
-
-    try {
-      const { data } = axios({
-        method: "POST",
-        url: import.meta.env.VITE_API_URL + "forms",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: JSON.stringify(form),
-      })
-        .then((res) => {
-          if (res.data.message) {
-            setLoading(false);
-            toast.error("This phone number is already registered");
-            return;
-          } else {
-            setForm({
-              name: "",
-              phone: "",
-              identity: "internal", //or outcomer
-              major: "",
-              payment_method: "",
-              registered_at: "",
-              personal_id_front: "",
-              personal_id_back: "",
-              uni_id: "",
-            });
-            setLoading(false);
-            return toast.success("You have been registered !");
-          }
-        })
-        .catch((err) => {
-          setLoading(false);
-          toast.error("An error has occured");
-        });
-    } catch (error) {
       return;
+    } else {
+      try {
+        const { data } = axios({
+          method: "POST",
+          url: import.meta.env.VITE_API_URL + "forms",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          data: JSON.stringify(form),
+        })
+          .then((res) => {
+            if (res.data.message) {
+              setLoading(false);
+              toast.error("This phone number is already registered");
+              return;
+            } else {
+              setForm({
+                name: "",
+                phone: "",
+                identity: "internal", //or outcomer
+                major: "",
+                payment_method: "",
+                registered_at: "",
+                personal_id_front: "",
+                personal_id_back: "",
+                uni_id: "",
+              });
+              setLoading(false);
+              return toast.success("You have been registered !");
+            }
+          })
+          .catch((err) => {
+            setLoading(false);
+            toast.error("An error has occured");
+          });
+      } catch (error) {
+        return;
+      }
     }
   };
   return (
